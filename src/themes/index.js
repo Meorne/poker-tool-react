@@ -1,9 +1,3 @@
-const theme = {
-  name: 'ocean',
-  primary: '#122C34',
-  secondary: '#224870',
-  tertiary: '#44CFCB',
-  text: '#fff',
-};
+const theme = {}
 
-export default theme;
+export default theme

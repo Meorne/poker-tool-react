@@ -1,0 +1,7 @@
+const cardListType = [{}]
+
+export {
+  cardListType,
+}
+
+export default cardListType
