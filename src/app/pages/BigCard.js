@@ -1,29 +1,16 @@
 import React, { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import { getRealRandom } from '../utils'
 import { cardContext, bigCardStatus } from '../context'
 import { cardListType } from '../../assets/config'
 import Card from './Card'
-import reload from '../../assets/icons/reload.svg'
-
-const propTypes = {
-  cardName: PropTypes.string,
-  onClick: PropTypes.function,
-  variationList: PropTypes.array,
-}
-
-const defaultProps = {
-  cardName: null,
-  onClick: () => null,
-  variationList: [],
-}
+import reload from '../../assets/reload.svg'
 
 const transitionSpeed = `0.3s`
 const FullSizeCard = styled.div`
   position: fixed;
   z-index: 1;
-  background-color: #fff;
+  background-color: #efeff0;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -91,9 +78,9 @@ const RefreshBtn = styled.button`
   }
 `
 
-const genRandVar = (variationList, currentResult) => {
-  if (variationList.length > 0) {
-    return `${variationList[getRealRandom(0, variationList.length, variationList.findIndex(el => el === currentResult))]}`
+const genRandVar = (variation, currentResult) => {
+  if (variation.length > 0) {
+    return `${variation[getRealRandom(0, variation.length, variation.findIndex(el => el === currentResult))]}`
   }
   return ``
 }
@@ -103,18 +90,18 @@ const BigCard = () => {
   const { bcStatus, setBcStatus } = useContext(bigCardStatus)
   const [currentVar, setCurrentVar] = useState(null)
   const [displayRefresh, setRefreshDisplay] = useState(false)
-  const variationList = cardListType.filter(el => el.card === activCard)?.[0]?.variation || []
+  const { variation = [], colors } = cardListType.find(el => el.card === activCard) || {}
 
   useEffect(() => {
     setRefreshDisplay()
-    if (variationList.length > 0) {
-      if (!currentVar && bcStatus) setCurrentVar(genRandVar(variationList))
+    if (variation.length > 0) {
+      if (!currentVar && bcStatus) setCurrentVar(genRandVar(variation))
 
-      if (variationList.length > 1) {
+      if (variation.length > 1) {
         setRefreshDisplay(true)
       }
     }
-    if (variationList.length === 0 || !bcStatus) {
+    if (variation.length === 0 || !bcStatus) {
       if (currentVar) setCurrentVar(null)
       setRefreshDisplay(false)
     }
@@ -127,21 +114,18 @@ const BigCard = () => {
     <FullSizeCard className={bcStatus}>
       <RefreshBtn
         className={displayRefresh ? `show` : ``}
-        onClick={() => { setCurrentVar(genRandVar(variationList, currentVar)) }}
+        onClick={() => { setCurrentVar(genRandVar(variation, currentVar)) }}
       >
         <img src={reload} alt="refresh" />
       </RefreshBtn>
       <Card
         cardName={activCard}
         variation={currentVar}
+        colors={colors}
         onClick={() => setBcStatus(``)}
       />
     </FullSizeCard>
   )
 }
-
-Card.propTypes = propTypes
-
-Card.defaultProps = defaultProps
 
 export default BigCard

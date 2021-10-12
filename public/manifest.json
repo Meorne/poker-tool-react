@@ -3,11 +3,11 @@
     "name": "Poker Planning Cards",
     "display": "standalone",
     "icons": [{
-        "src": "src/assets/img/icon/jetonbleu-196.png",
+        "src": "icons/icon-196.png",
         "type": "image/png",
         "sizes": "196x196"
     }, {
-        "src": "src/assets/img/icon/jetonbleu-512.png",
+        "src": "icons/icon-512.png",
         "type": "image/png",
         "sizes": "512x512"
     }],

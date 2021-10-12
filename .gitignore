@@ -23,6 +23,7 @@ yarn-error.log*
 
 src/assets/config.js
 src/assets/img/*
-src/assets/icons/*
 !src/assets/img/.gitkeep
-!src/assets/icons/.gitkeep
+
+public/icons/*
+!public/icons/.gitkeep

@@ -6,12 +6,14 @@ const propTypes = {
   cardName: PropTypes.string,
   variation: PropTypes.string,
   onClick: PropTypes.func,
+  colors: PropTypes.object,
 }
 
 const defaultProps = {
   cardName: null,
   variation: null,
   onClick: () => null,
+  colors: null,
 }
 
 const SmallCard = styled.div`
@@ -44,7 +46,7 @@ const FakeCard = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: #48bcff;
+    background-color: ${({ colors }) => colors?.bg || `#fff`};
   }
 
   & .nbrStyle{
@@ -53,22 +55,26 @@ const FakeCard = styled.div`
     font-weight: bold;
     width: 100%;
     text-align: center;
+    color: ${({ colors }) => colors?.font || `#000`};
   }
 `
 
-const Card = ({ cardName, variation, onClick }) => {
+const Card = ({
+  cardName, variation, onClick, colors,
+}) => {
   if (!cardName) return null
+  const finalImgName = `${cardName}${variation ? `-${variation}` : ``}`
   try {
-    const currentCard = require(`../../assets/img/${cardName}${variation ? `-${variation}` : ``}.jpg`).default
+    const currentCard = require(`../../assets/img/${finalImgName}.jpg`).default
     return (
       <SmallCard>
         <ImgCard className="imgCard" src={currentCard} alt="" onClick={onClick} />
       </SmallCard>
     )
   } catch (error) {
-    console.info(error)
+    console.info(`../../assets/img/${finalImgName}.jpg not found, generate a fake card`)
     return (
-      <FakeCard className="fakeCard">
+      <FakeCard className="fakeCard" colors={colors}>
         <div className="wrapper" onClick={onClick}>
           <div className="nbrStyle">
             {cardName}

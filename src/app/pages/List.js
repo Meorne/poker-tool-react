@@ -35,27 +35,33 @@ const cardList = () => {
   const { setActivCard } = useContext(cardContext)
   const { setBcStatus } = useContext(bigCardStatus)
 
-  const cardList = (type, title) => (
-    <>
-      <Title>
-        {`${title} Cards`}
-      </Title>
-      <CardWrapper>
-        {cardListType
-          .filter(el => el.type === type)
-          .map(({ card }) => (
+  const cardList = (type, title) => {
+    const typeList = cardListType
+      .filter(el => el.type === type)
+
+    if (!typeList.length) return null
+
+    return (
+      <>
+        <Title>
+          {`${title} Cards`}
+        </Title>
+        <CardWrapper>
+          {typeList.map(({ card, colors }) => (
             <Card
               key={card}
               cardName={card}
+              colors={colors}
               onClick={() => {
                 setActivCard(card)
                 setBcStatus(`activ`)
               }}
             />
           ))}
-      </CardWrapper>
-    </>
-  )
+        </CardWrapper>
+      </>
+    )
+  }
 
   return (
     <>
