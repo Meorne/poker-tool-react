@@ -10,6 +10,7 @@ const GridCard = styled.div`
   flex-wrap: wrap;
   align-content: stretch;
   overflow: auto;
+  height: 100%;
 `
 
 const CardWrapper = styled.div`
@@ -44,6 +45,7 @@ const cardList = () => {
           .filter(el => el.type === type)
           .map(({ card }) => (
             <Card
+              key={card}
               cardName={card}
               onClick={() => {
                 setActivCard(card)
@@ -61,6 +63,7 @@ const cardList = () => {
       <GridCard>
         {cardList(`standard`, `Poker`)}
         {cardList(`special`, `Special`)}
+        {cardList(`tshirt`, `T-shirt Size`)}
       </GridCard>
     </>
   )

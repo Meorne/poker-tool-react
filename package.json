@@ -2,6 +2,7 @@
   "name": "poker-tool-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@fontsource/raleway": "^4.5.0",
     "@testing-library/jest-dom": "^5.14.1",

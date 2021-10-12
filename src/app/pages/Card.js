@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const propTypes = {
   cardName: PropTypes.string,
   variation: PropTypes.string,
-  onClick: PropTypes.function,
+  onClick: PropTypes.func,
 }
 
 const defaultProps = {
@@ -15,6 +15,7 @@ const defaultProps = {
 }
 
 const SmallCard = styled.div`
+  cursor: pointer;
   padding:5px;
 `
 const ImgCard = styled.img`
@@ -25,12 +26,14 @@ const ImgCard = styled.img`
 `
 const FakeCard = styled.div`
   width: 100%;
-  padding-top: 100%;
+  padding-top: 150%;
   position: relative;
+  cursor: pointer;
+  background: #fff;
   
   & .wrapper {
     border: #333 1px solid;
-    border-radius: 2ch;
+    border-radius: 1ch;
     position: absolute;
     top: 5px;
     bottom: 5px;
@@ -41,11 +44,12 @@ const FakeCard = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-color: #48bcff;
   }
 
   & .nbrStyle{
     font-family: 'Raleway', sans-serif;
-    font-size: 3ch;
+    font-size: 4ch;
     font-weight: bold;
     width: 100%;
     text-align: center;

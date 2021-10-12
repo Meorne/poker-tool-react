@@ -23,7 +23,7 @@ const transitionSpeed = `0.3s`
 const FullSizeCard = styled.div`
   position: fixed;
   z-index: 1;
-  background-color: #efeff0;
+  background-color: #fff;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -40,7 +40,6 @@ const FullSizeCard = styled.div`
     opacity: 1;
     transition: opacity ${transitionSpeed} linear 0.01s, 
     visibility ${transitionSpeed} linear;
-    
   }
 
   & .imgCard {
@@ -119,7 +118,6 @@ const BigCard = () => {
       if (currentVar) setCurrentVar(null)
       setRefreshDisplay(false)
     }
-    console.log(currentVar)
   }, [
     activCard,
     bcStatus,
