@@ -29,7 +29,8 @@ const FullSizeCard = styled.div`
     visibility ${transitionSpeed} linear;
   }
 
-  & .imgCard {
+  & .imgCard,
+  & .fakeCard {
     position: absolute;
     width: auto;
     height: auto;
@@ -40,21 +41,12 @@ const FullSizeCard = styled.div`
     transform: translate(-50%, -50%);
   }
   & .fakeCard {
-    width: 100%;
-    height: 100%;
-    padding-top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-
     & .wrapper {
-      width: 80%;
-      height: 80%;
-      top: auto;
-      bottom: auto;
-      left: auto;
-      right: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
 
     & .nbrStyle {

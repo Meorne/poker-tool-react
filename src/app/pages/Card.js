@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import fakecard from '../../assets/img/fake-card.jpg'
+
 const propTypes = {
   cardName: PropTypes.string,
   variation: PropTypes.string,
@@ -27,11 +29,16 @@ const ImgCard = styled.img`
   display: block;
 `
 const FakeCard = styled.div`
-  width: 100%;
-  padding-top: 150%;
   position: relative;
   cursor: pointer;
-  background: #fff;
+
+  & > img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    visibility: hidden;
+  }
   
   & .wrapper {
     border: #333 1px solid;
@@ -46,12 +53,12 @@ const FakeCard = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: ${({ colors }) => colors?.bg || `#fff`};
+    background-color: ${({ colors }) => colors?.bg || `#efeff0`};
   }
 
   & .nbrStyle{
     font-family: 'Raleway', sans-serif;
-    font-size: 4ch;
+    font-size: 10ch;
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -72,9 +79,9 @@ const Card = ({
       </SmallCard>
     )
   } catch (error) {
-    console.info(`../../assets/img/${finalImgName}.jpg not found, generate a fake card`)
     return (
       <FakeCard className="fakeCard" colors={colors}>
+        <img src={fakecard} alt="" />
         <div className="wrapper" onClick={onClick}>
           <div className="nbrStyle">
             {cardName}

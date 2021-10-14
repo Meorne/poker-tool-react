@@ -23,7 +23,7 @@ yarn-error.log*
 
 src/assets/config.js
 src/assets/img/*
-!src/assets/img/.gitkeep
+!src/assets/img/fake-card.jpg
 
 public/icons/*
 !public/icons/.gitkeep
