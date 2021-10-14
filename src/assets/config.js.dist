@@ -1,4 +1,11 @@
-const cardListType = [{}]
+const cardListType = [{
+  card: `My Card`,
+  variation: [],
+  type: `standard`, // special/tshirt to add more type check in src/app/pages/List.js
+  colors: {
+    bg: `#fee`,
+    font: `#fee`,
+  }]
 
 export {
   cardListType,
