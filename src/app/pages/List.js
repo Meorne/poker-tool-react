@@ -1,78 +1,76 @@
-import React, { useContext } from 'react'
-import styled from 'styled-components'
+import React, { useContext, useState } from 'react'
 import { cardListType } from '../../assets/config'
 import Card from './Card'
 import BigCard from './BigCard'
 import { cardContext, bigCardStatus } from '../context'
+import {
+  GridCard,
+  ListWrapper,
+  CardWrapper,
+  Title,
+  Arrow,
+} from '../styles/List.style'
 
-const GridCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-content: stretch;
-  overflow: auto;
-  height: 100%;
-`
-
-const CardWrapper = styled.div`
-  display: grid;
-  width: calc(100% - 2px);
-  align-content: stretch;
-  grid-template-columns: repeat(6, minmax(auto, 16.66%));
-
-  @media (max-width: 640px) {
-    grid-template-columns: repeat(4, minmax(auto, 25%));
-  }
-`
-
-const Title = styled.h2`
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
-  width: 100%;
-  text-align: center;
-`
-
-const cardList = () => {
+const cardList = (type, title, toggleVisibility) => {
   const { setActivCard } = useContext(cardContext)
   const { setBcStatus } = useContext(bigCardStatus)
+  const [visible, setVisibility] = useState(false)
 
-  const cardList = (type, title) => {
-    const typeList = cardListType
-      .filter(el => el.type === type)
+  const typeList = cardListType
+    .filter(el => el.type === type)
 
-    if (!typeList.length) return null
+  if (!typeList.length) return null
 
-    return (
-      <>
-        <Title>
-          {`${title} Cards`}
-        </Title>
-        <CardWrapper>
-          {typeList.map(({ card, colors }) => (
-            <Card
-              key={card}
-              cardName={card}
-              colors={colors}
-              onClick={() => {
-                setActivCard(card)
-                setBcStatus(`activ`)
-              }}
-            />
-          ))}
-        </CardWrapper>
-      </>
-    )
+  const propsTitle = {}
+  const propsWrapper = {}
+  let classCardWrapper = `CardWrapper`
+
+  if (toggleVisibility) {
+    propsTitle.onClick = () => {
+      setVisibility(!visible)
+    }
+    propsWrapper.className = `toggle`
+    propsTitle.className = `${visible ? `open` : `close`}`
+    classCardWrapper = `${classCardWrapper} ${visible ? `visible` : ``}`
+  } else {
+    classCardWrapper = `${classCardWrapper} visible`
   }
 
   return (
-    <>
-      <BigCard />
-      <GridCard>
-        {cardList(`standard`, `Poker`)}
-        {cardList(`special`, `Special`)}
-        {cardList(`tshirt`, `T-shirt Size`)}
-      </GridCard>
-    </>
+    <ListWrapper {...propsWrapper}>
+      <Title {...propsTitle}>
+        {`${title} Cards`}
+        <Arrow className="arrow" />
+      </Title>
+      <CardWrapper className={classCardWrapper}>
+        {typeList.map(({ cardId, cardName, colors }) => (
+          <Card
+            key={cardId}
+            onClick={() => {
+              setActivCard(cardId)
+              setBcStatus(`activ`)
+            }}
+            {...{
+              cardId,
+              cardName,
+              colors,
+            }}
+          />
+        ))}
+      </CardWrapper>
+    </ListWrapper>
   )
 }
 
-export default cardList
+const cardLists = () => (
+  <>
+    <BigCard />
+    <GridCard>
+      {cardList(`standard`, `Poker`)}
+      {cardList(`special`, `Special`)}
+      {cardList(`tshirt`, `T-shirt Size`, true)}
+    </GridCard>
+  </>
+)
+
+export default cardLists

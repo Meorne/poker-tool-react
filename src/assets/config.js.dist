@@ -1,10 +1,12 @@
 const cardListType = [{
-  card: `My Card`,
-  variation: [],
+  cardName: `My Card`,
+  cardId: `card-id`,
+  variation: [], //
   type: `standard`, // special/tshirt to add more type check in src/app/pages/List.js
   colors: {
     bg: `#fee`,
-    font: `#fee`,
+    font: `#333`,
+    border: `#333`,
   }]
 
 export {
