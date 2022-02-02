@@ -16,7 +16,6 @@ export const ListWrapper = styled.div`
   overflow: hidden;
   transition: height 0.15s ease-out;
 
-
   &.visible {
     height: auto;
   }

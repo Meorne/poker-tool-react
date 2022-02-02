@@ -43,10 +43,18 @@ export const FakeCard = styled.div`
   
   & .strStyle{
     font-family: 'theboldfont', 'Raleway', sans-serif;
-    font-size: 10vw;
+    font-size: 2rem;
     font-weight: bold;
     width: 100%;
     text-align: center;
     color: ${({ colors }) => colors?.font || `#000`};
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  @media only screen and (orientation: landscape) {
+    & .strStyle{
+      font-size: 3rem;
+    }
   }
 `

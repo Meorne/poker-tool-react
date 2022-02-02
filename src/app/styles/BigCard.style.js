@@ -58,8 +58,13 @@ export const FullSizeCard = styled.div`
       box-shadow: 1vw 1vw 3vw 0 rgba(0,0,0,.5);
     }
 
-    & .nbrStyle {
-      font-size: 15ch;
+    & .strStyle {
+      font-size: 30vw;
+    }
+    @media only screen and (orientation: landscape) {
+      & .strStyle{
+        font-size: 15vw;
+      }
     }
   }
 `
