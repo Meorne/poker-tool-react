@@ -59,11 +59,22 @@ export const FullSizeCard = styled.div`
     }
 
     & .strStyle {
-      font-size: 30vw;
+      font-size: 10vw;
     }
-    @media only screen and (orientation: landscape) {
+    
+    @media only screen 
+    and (max-width: 1024px)
+    and (orientation: landscape) {
       & .strStyle{
-        font-size: 15vw;
+        font-size: 20vw;
+      }
+    }
+
+    @media only screen 
+    and (max-width: 1024px) 
+    and (orientation: portrait) {
+      & .strStyle{
+        font-size: 30vw;
       }
     }
   }

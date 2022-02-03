@@ -43,7 +43,7 @@ export const FakeCard = styled.div`
   
   & .strStyle{
     font-family: 'theboldfont', 'Raleway', sans-serif;
-    font-size: 2rem;
+    font-size: 5vw;
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -52,9 +52,11 @@ export const FakeCard = styled.div`
     overflow: hidden;
   }
 
-  @media only screen and (orientation: landscape) {
+  @media only screen 
+    and (max-width: 1024px)
+    and (orientation: portrait) {
     & .strStyle{
-      font-size: 3rem;
+      font-size: 10vw;
     }
   }
 `
