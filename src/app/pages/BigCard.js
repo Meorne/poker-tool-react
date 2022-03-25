@@ -3,7 +3,7 @@ import { getRealRandom } from '../utils'
 import { cardContext, bigCardStatus } from '../context'
 import { cardListType } from '../../assets/config'
 import Card from './Card'
-import reload from '../../assets/reload.svg'
+import reload from '../../assets/img/reload.svg'
 
 import {
   FullSizeCard,
@@ -23,7 +23,7 @@ const BigCard = () => {
   const [currentVar, setCurrentVar] = useState(null)
   const [displayRefresh, setRefreshDisplay] = useState(false)
   const {
-    variation = [], colors, cardName, cardId,
+    variation = [], colors, cardName, cardId, customStyle,
   } = cardListType.find(el => el.cardId === activCard) || {}
 
   useEffect(() => {
@@ -57,6 +57,7 @@ const BigCard = () => {
         cardName={cardName}
         variation={currentVar}
         colors={colors}
+        customStyle={customStyle}
         onClick={() => setBcStatus(``)}
       />
     </FullSizeCard>

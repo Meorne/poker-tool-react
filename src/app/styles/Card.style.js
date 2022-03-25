@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
-export const SmallCard = styled.div`
+export const SmallCard = styled.div.attrs(() => ({ className: `SmallCard` }))`
   cursor: pointer;
   padding:5px;
 `
-export const ImgCard = styled.img`
+export const ImgCard = styled.img.attrs(() => ({ className: `ImgCard` }))`
   width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
 `
-export const FakeCard = styled.div`
+export const FakeCard = styled.div.attrs(() => ({ className: `FakeCard` }))`
   position: relative;
   cursor: pointer;
 
@@ -43,20 +43,26 @@ export const FakeCard = styled.div`
   
   & .strStyle{
     font-family: 'theboldfont', 'Raleway', sans-serif;
-    font-size: 5vw;
+    font-size: 6vw;
     font-weight: bold;
     width: 100%;
     text-align: center;
     color: ${({ colors }) => colors?.font || `#000`};
     text-overflow: ellipsis;
     overflow: hidden;
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   }
 
   @media only screen 
-    and (max-width: 1024px)
-    and (orientation: portrait) {
+    and (orientation: portrait){
     & .strStyle{
-      font-size: 10vw;
+      zoom: 170% ;
     }
   }
+
+  ${({ customStyle }) => customStyle || ``};
+
 `

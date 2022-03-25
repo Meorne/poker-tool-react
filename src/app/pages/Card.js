@@ -15,6 +15,7 @@ const propTypes = {
   variation: PropTypes.string,
   onClick: PropTypes.func,
   colors: PropTypes.object,
+  customStyle: PropTypes.string,
 }
 
 const defaultProps = {
@@ -23,10 +24,11 @@ const defaultProps = {
   variation: null,
   onClick: () => null,
   colors: null,
+  customStyle: null,
 }
 
 const Card = ({
-  cardId, cardName, variation, onClick, colors,
+  cardId, cardName, variation, onClick, colors, customStyle,
 }) => {
   if (!cardId) return null
   const finalImgName = `${cardId}${variation ? `-${variation}` : ``}`
@@ -39,7 +41,7 @@ const Card = ({
     )
   } catch (error) {
     return (
-      <FakeCard className="fakeCard" colors={colors}>
+      <FakeCard colors={colors} customStyle={customStyle}>
         <img src={fakecard} alt="" title={`${cardName}`} />
         <div className="wrapper" onClick={onClick}>
           <div className="strStyle">

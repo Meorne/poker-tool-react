@@ -43,7 +43,9 @@ const cardList = (type, title, toggleVisibility) => {
         <Arrow className="arrow" />
       </Title>
       <CardWrapper className={classCardWrapper}>
-        {typeList.map(({ cardId, cardName, colors }) => (
+        {typeList.map(({
+          cardId, cardName, colors, customStyle,
+        }) => (
           <Card
             key={cardId}
             onClick={() => {
@@ -54,6 +56,7 @@ const cardList = (type, title, toggleVisibility) => {
               cardId,
               cardName,
               colors,
+              customStyle,
             }}
           />
         ))}

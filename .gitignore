@@ -24,6 +24,8 @@ yarn-error.log*
 src/assets/config.js
 src/assets/img/*
 !src/assets/img/fake-card.jpg
+!src/assets/img/tshirt.svg
+!src/assets/img/reload.svg
 
 public/icons/*
 !public/icons/.gitkeep

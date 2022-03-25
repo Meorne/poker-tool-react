@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const transitionSpeed = `0.3s`
 
-export const FullSizeCard = styled.div`
+export const FullSizeCard = styled.div.attrs(() => ({ className: `FullSizeCard` }))`
   position: fixed;
   z-index: 1;
   background-color: #efeff0;
@@ -39,47 +39,55 @@ export const FullSizeCard = styled.div`
   }
 
   & .imgCard,
-  & .fakeCard {
+  & .FakeCard {
     width: auto;
     height: auto;
     max-width: calc(100% - 100px);
     max-height: calc(100% - 100px);
   }
   
-  & .fakeCard {
+  & .FakeCard {
     & .wrapper {
-      border-radius: 5vw;
+      border-radius: 3vw;
       position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
-      border-width: 1vw;
-      box-shadow: 1vw 1vw 3vw 0 rgba(0,0,0,.5);
+      border-width: .5vw;
+      box-shadow: .5vw .5vw 2vw 0 rgba(0,0,0,.5);
     }
 
     & .strStyle {
-      font-size: 10vw;
+      zoom: 200%;
     }
-    
     @media only screen 
-    and (max-width: 1024px)
-    and (orientation: landscape) {
-      & .strStyle{
-        font-size: 20vw;
+    and (max-width: 1024px) {
+      & .wrapper {
+        border-width: 1vw;
+        box-shadow: 1vw 1vw 6vw 0 rgba(0,0,0,.5);
       }
     }
-
     @media only screen 
     and (max-width: 1024px) 
     and (orientation: portrait) {
       & .strStyle{
-        font-size: 30vw;
+        zoom: 500%;
+      }
+      & .wrapper {
+        border-radius: 6vw;
+      }
+    }
+    @media only screen 
+    and (max-width: 1024px) 
+    and (orientation: landscape) {
+      & .strStyle{
+        zoom: 300%;
       }
     }
   }
 `
-export const RefreshBtn = styled.button`
+export const RefreshBtn = styled.button.attrs(() => ({ className: `RefreshBtn` }))`
   display: none;
   position: absolute;
   cursor: pointer;

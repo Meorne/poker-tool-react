@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const GridCard = styled.div`
+export const GridCard = styled.div.attrs(() => ({ className: `GridCard` }))`
   display: block;
   overflow: auto;
   height: 100%;
 `
-export const ListWrapper = styled.div`
+export const ListWrapper = styled.div.attrs(() => ({ className: `ListWrapper` }))`
   display: flex;
   flex-wrap: wrap;
   align-content: stretch;
@@ -29,7 +29,7 @@ export const ListWrapper = styled.div`
   } 
 }
 `
-export const CardWrapper = styled.div`
+export const CardWrapper = styled.div.attrs(() => ({ className: `CardWrapper` }))`
   display: grid;
   width: calc(100% - 2px);
   align-content: stretch;
@@ -40,7 +40,7 @@ export const CardWrapper = styled.div`
   }
 `
 
-export const Title = styled.h2`
+export const Title = styled.h2.attrs(() => ({ className: `Title` }))`
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   width: 100%;
@@ -54,7 +54,7 @@ export const Title = styled.h2`
     }
   }
 `
-export const Arrow = styled.span`
+export const Arrow = styled.span.attrs(() => ({ className: `Arrow` }))`
   display: none;
   width: 1.25rem;
   height: 1.25rem;

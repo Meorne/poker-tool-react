@@ -3,6 +3,7 @@ const cardListType = [{
   cardId: `card-id`,
   variation: [], //
   type: `standard`, // special/tshirt to add more type check in src/app/pages/List.js
+  customStyle:``,
   colors: {
     bg: `#fee`,
     font: `#333`,
