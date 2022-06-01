@@ -11,7 +11,15 @@ import {
   Arrow,
 } from '../styles/List.style'
 
-const cardList = (type, title, toggleVisibility) => {
+interface PropsTitle {
+  onClick? : () => void
+  className?: string 
+}
+interface PropsWrapper {
+  className?: string 
+}
+
+const cardList = (type: string , title : string, toggleVisibility = false) => {
   const { setActivCard } = useContext(cardContext)
   const { setBcStatus } = useContext(bigCardStatus)
   const [visible, setVisibility] = useState(false)
@@ -21,14 +29,12 @@ const cardList = (type, title, toggleVisibility) => {
 
   if (!typeList.length) return null
 
-  const propsTitle = {}
-  const propsWrapper = {}
+  const propsTitle:PropsTitle = {}
+  const propsWrapper:PropsWrapper = {}
   let classCardWrapper = `CardWrapper`
 
   if (toggleVisibility) {
-    propsTitle.onClick = () => {
-      setVisibility(!visible)
-    }
+    propsTitle.onClick = () => setVisibility(!visible)
     propsWrapper.className = `toggle`
     propsTitle.className = `${visible ? `open` : `close`}`
     classCardWrapper = `${classCardWrapper} ${visible ? `visible` : ``}`

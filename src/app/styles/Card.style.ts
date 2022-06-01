@@ -10,7 +10,15 @@ export const ImgCard = styled.img.attrs(() => ({ className: `ImgCard` }))`
   object-fit: cover;
   display: block;
 `
-export const FakeCard = styled.div.attrs(() => ({ className: `FakeCard` }))`
+interface FakeCardProps {
+  colors? : {
+    border: string
+    bg: string,
+    font: string
+  },
+  customStyle: string
+}
+export const FakeCard = styled.div.attrs(() => ({ className: `FakeCard` }))<FakeCardProps>`
   position: relative;
   cursor: pointer;
 

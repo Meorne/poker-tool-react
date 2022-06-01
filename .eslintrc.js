@@ -1,4 +1,7 @@
+const path = require(`path`)
+
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -11,6 +14,7 @@ module.exports = {
     `plugin:jest-dom/recommended`,
     `plugin:testing-library/react`,
   ],
+  parser: `@typescript-eslint/parser`,
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -24,6 +28,7 @@ module.exports = {
     `jest-dom`,
     `testing-library`,
   ],
+  ignorePatterns: [`*.json`],
   rules: {
     "global-require": 1,
     "import/no-dynamic-require": 0,
@@ -44,7 +49,6 @@ module.exports = {
     camelcase: 0,
     'no-console': 0,
     'react/require-default-props': 0,
-    'global-require': 0,
     'react/jsx-fragments': 0,
     'react/jsx-one-expression-per-line': [1, { allow: `single-child` }],
     'no-param-reassign': 0,
@@ -61,14 +65,6 @@ module.exports = {
     'jest/no-identical-title': `error`,
     'jest/prefer-to-have-length': `warn`,
     'jest/valid-expect': `error`,
-    'import/no-unresolved': [
-      `error`,
-      {
-        ignore: [
-          `src/`,
-        ],
-      },
-    ],
     'import/no-extraneous-dependencies': [
       `error`,
       {
@@ -76,14 +72,35 @@ module.exports = {
       },
     ],
     'no-case-declarations': 0,
-    'react/jsx-filename-extension': [
-      1,
+    "react/jsx-filename-extension": [1, { extensions: [`.js`, `.jsx`, `.ts`, `.tsx`] }],
+    "import/extensions": [
+      `error`,
+      `ignorePackages`,
       {
-        extensions: [
-          `.js`,
-          `.jsx`,
-        ],
+        js: `never`,
+        jsx: `never`,
+        ts: `never`,
+        tsx: `never`,
       },
     ],
+    "no-use-before-define": 0,
+  },
+  settings: {
+    react: {
+      createClass: `createClass`,
+      pragma: `React`,
+      version: `17`,
+    },
+    'import/resolver': {
+      node: {
+        paths: [
+          path.resolve(__dirname, `./src`),
+        ],
+        extensions: [`.js`, `.jsx`, `.ts`, `.tsx`],
+      },
+    },
+    jsdoc: {
+      mode: `typescript`,
+    },
   },
 }

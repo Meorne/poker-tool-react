@@ -1,4 +1,4 @@
-export const getRealRandom = (min, max, prevRand) => {
+export const getRealRandom = (min: number, max: number, prevRand?:number) => {
   if (min === max) return max
 
   const newRand = Math.floor(Math.random() * (max - min) + min)
